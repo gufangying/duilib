@@ -18,6 +18,7 @@ CControlUI* CDialogBuilder::Create(STRINGorID xml, LPCTSTR type, IDialogBuilderC
             if( !m_xml.Load(xml.m_lpstr) ) return NULL;
         }
         else {
+			//LLDO:加载skin.xml文件.
             if( !m_xml.LoadFromFile(xml.m_lpstr) ) return NULL;
         }
     }
@@ -51,14 +52,23 @@ CControlUI* CDialogBuilder::Create(IDialogBuilderCallback* pCallback, CPaintMana
         LPCTSTR pstrName = NULL;
         LPCTSTR pstrValue = NULL;
         LPTSTR pstr = NULL;
+
+		//LLDO:找到跟节点下的所有一级子节点
         for( CMarkupNode node = root.GetChild() ; node.IsValid(); node = node.GetSibling() ) {
             pstrClass = node.GetName();
+			
+			//LLDO:
+			static int nIndex = 1;
+			CMyDebug::Log("className = %s, nIndex = %d \n", pstrClass, nIndex++);
+
             if( _tcsicmp(pstrClass, _T("Image")) == 0 ) {
                 nAttributes = node.GetAttributeCount();
                 LPCTSTR pImageName = NULL;
                 LPCTSTR pImageResType = NULL;
                 DWORD mask = 0;
 				bool shared = false;
+
+				//LLDO:解析每个节点的属性
                 for( int i = 0; i < nAttributes; i++ ) {
                     pstrName = node.GetAttributeName(i);
                     pstrValue = node.GetAttributeValue(i);
@@ -163,6 +173,7 @@ CControlUI* CDialogBuilder::Create(IDialogBuilderCallback* pCallback, CPaintMana
 			}
         }
 
+		//LLDO:根节点就是主窗口了, 设置窗口属性.
         pstrClass = root.GetName();
         if( _tcsicmp(pstrClass, _T("Window")) == 0 ) {
             if( pManager->GetPaintWindow() ) {

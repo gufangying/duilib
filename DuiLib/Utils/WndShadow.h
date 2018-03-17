@@ -34,7 +34,8 @@ class DUILIB_API CWndShadow
 public:
 	CWndShadow(void);
 public:
-	virtual ~CWndShadow(void);
+	//virtual ~CWndShadow(void);
+	~CWndShadow(void);
 
 protected:
 

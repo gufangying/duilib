@@ -45,7 +45,7 @@ private:
         ULONG iData;
     } XMLELEMENT;
 
-    LPTSTR m_pstrXML;
+    LPTSTR m_pstrXML;			//这里存放解析出来的xml文件的数据.
     XMLELEMENT* m_pElements;
     ULONG m_nElements;
     ULONG m_nReservedElements;
