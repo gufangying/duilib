@@ -150,6 +150,9 @@
     <ClCompile Include="Control\UITreeView.cpp">
       <Filter>Source Files\Control</Filter>
     </ClCompile>
+    <ClCompile Include="MyDebug\MyDebug.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StdAfx.h">
@@ -271,6 +274,9 @@
     </ClInclude>
     <ClInclude Include="Control\UITreeView.h">
       <Filter>Header Files\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="MyDebug\MyDebug.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

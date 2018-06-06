@@ -1060,7 +1060,8 @@ bool CControlUI::Paint(HDC hDC, const RECT& rcPaint, CControlUI* pStopControl)
 	if( OnPaint ) {
 		if( !OnPaint(this) ) return true;
 	}
-	if (!DoPaint(hDC, rcPaint, pStopControl)) return false;
+	if (!DoPaint(hDC, rcPaint, pStopControl))
+		return false;
     if( m_pCover != NULL ) return m_pCover->Paint(hDC, rcPaint);
     return true;
 }
